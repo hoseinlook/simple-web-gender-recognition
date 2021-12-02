@@ -18,9 +18,8 @@ body {
     grid-template-columns: 30% 70%;
     grid-gap: 2px;
     height: 300px;
-    width: 70%;
     box-shadow: 5px 10px 30px #ff004d;
-    margin: auto;
+    padding: -50%;
     padding-bottom: 20px;
 }
 
