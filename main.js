@@ -2,6 +2,16 @@ NAME = ""
 NAME_LIST = ''
 console.log('hi')
 
+
+function print_error(msg) {
+    document.getElementById('error').style.visibility = 'visible'
+    document.getElementById('error').innerText = msg
+
+    window.setTimeout(() => {
+        document.getElementById('error').style.visibility = 'hidden'
+    },4000)
+}
+
 function load_names_from_storage() {
     genders = window.localStorage.getItem('genders')
     if (genders != null) {
@@ -22,12 +32,17 @@ function submit() {
     NAME = document.getElementById('name_field').value
     console.log(NAME)
     if (NAME.length <= 2) {
+        print_error('name length <2')
         return
     }
     fetch(`https://api.genderize.io/?name=${NAME}`, requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result)
+            if (result.gender==null){
+                print_error(`${NAME} has not gender`)
+                return
+            }
             document.getElementById('predict_gender').innerText = result.gender
             document.getElementById('predict_value').innerText = result.probability
         })
@@ -49,7 +64,7 @@ function save() {
         }
     })
     if (NAME !== '') {
-        NAME_LIST += NAME +' ' + gender + '\n'
+        NAME_LIST += NAME + ' ' + gender + '\n'
         window.localStorage.setItem('genders', NAME_LIST)
     }
     load_names_from_storage()
@@ -57,8 +72,8 @@ function save() {
 
 }
 
-function remove_local_storage(){
+function remove_local_storage() {
 
-    window.localStorage.setItem('genders','')
+    window.localStorage.setItem('genders', '')
     load_names_from_storage()
 }
