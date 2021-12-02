@@ -1,5 +1,6 @@
 NAME = ""
-NAME_LIST = ''
+NAME_LIST = {}
+
 console.log('hi')
 
 
@@ -9,16 +10,21 @@ function print_error(msg) {
 
     window.setTimeout(() => {
         document.getElementById('error').style.visibility = 'hidden'
-    },4000)
+    }, 4000)
 }
 
 function load_names_from_storage() {
     genders = window.localStorage.getItem('genders')
     if (genders != null) {
-        NAME_LIST = genders
+        NAME_LIST = JSON.parse(genders)
         console.log(genders)
+        let value = ''
+        for (var e in NAME_LIST) {
+            value += e + ' ' + NAME_LIST[e] +'\n'
+        }
 
-        document.getElementById('names_list').value = genders
+
+        document.getElementById('names_list').value = value
     }
 }
 
@@ -39,7 +45,7 @@ function submit() {
         .then(response => response.json())
         .then(result => {
             console.log(result)
-            if (result.gender==null){
+            if (result.gender == null) {
                 print_error(`${NAME} has not gender`)
                 return
             }
@@ -64,8 +70,9 @@ function save() {
         }
     })
     if (NAME !== '') {
-        NAME_LIST += NAME + ' ' + gender + '\n'
-        window.localStorage.setItem('genders', NAME_LIST)
+        NAME_LIST[NAME]=gender
+        window.localStorage.setItem('genders', JSON.stringify(NAME_LIST))
+
     }
     load_names_from_storage()
     clear_radio()
@@ -74,6 +81,6 @@ function save() {
 
 function remove_local_storage() {
 
-    window.localStorage.setItem('genders', '')
+    window.localStorage.setItem('genders', JSON.stringify({}))
     load_names_from_storage()
 }

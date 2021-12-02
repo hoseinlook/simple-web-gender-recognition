@@ -15,7 +15,7 @@ body {
     background-color: rgba(255, 162, 0, 0.29);
     display: grid;
     position: static;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 35% 70%;
     grid-gap: 2px;
     height: 300px;
     box-shadow: 5px 10px 30px #ff004d;
