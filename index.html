@@ -16,7 +16,7 @@
     <div class="left_container">
         <h2> hi or she ??</h2>
 
-        <form class="inner" name="gender_form" >
+        <div class="inner"  >
             <label for="name_field" style="display: inline">Name:</label>
             <input type="text" id="name_field" minlength="2" maxlength="255" style="display: inline" required="required"/>
             <br>
@@ -29,23 +29,21 @@
             <input type="radio" id="women_choice" name="radio_group" value="female" />
 
             <br>
-            <button type="button" onclick="ali()" >submit</button>
+            <button type="button" onclick="submit()" >submit</button>
             <br>
-            <button type="button" onclick="ali()" >save</button>
-            <br>
-            <button type="reset"  >reset</button>
-        </form>
+            <button type="button" onclick="save()" >save</button>
+        </div>
 
     </div>
     <div class="right_container">
         <div >
             <h2> Prediction</h2>
-            <h4 id="predict_gender">Male</h4>
-            <h4 id="predict_value">0.93</h4>
+            <h4 id="predict_gender"></h4>
+            <h4 id="predict_value"></h4>
             <label>
                 Saved Answers
-                <textarea readonly="readonly"> </textarea>
-                <button type="button" onclick="ali()"> clear</button>
+                <textarea id="names_list" readonly="readonly"> </textarea>
+                <button type="button" onclick="remove_local_storage()"> clear</button>
             </label>
         </div>
     </div>
