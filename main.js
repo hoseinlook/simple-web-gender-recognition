@@ -57,7 +57,7 @@ function submit() {
                 document.getElementById('predict_value').innerText += " Duplicate"
             }
         })
-        .catch(error => console.log('error', error));
+        .catch(error => print_error(error.toString()));
 }
 
 function clear_radio() {
