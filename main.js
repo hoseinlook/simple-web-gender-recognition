@@ -20,7 +20,7 @@ function load_names_from_storage() {
         console.log(genders)
         let value = ''
         for (var e in NAME_LIST) {
-            value += e + ' ' + NAME_LIST[e] +'\n'
+            value += e + ' ' + NAME_LIST[e] + '\n'
         }
 
 
@@ -39,6 +39,7 @@ function submit() {
     console.log(NAME)
     if (NAME.length <= 2) {
         print_error('name length <2')
+        NAME = ''
         return
     }
     fetch(`https://api.genderize.io/?name=${NAME}`, requestOptions)
@@ -51,6 +52,10 @@ function submit() {
             }
             document.getElementById('predict_gender').innerText = result.gender
             document.getElementById('predict_value').innerText = result.probability
+
+            if (NAME in NAME_LIST) {
+                document.getElementById('predict_value').innerText += " Duplicate"
+            }
         })
         .catch(error => console.log('error', error));
 }
@@ -70,7 +75,7 @@ function save() {
         }
     })
     if (NAME !== '') {
-        NAME_LIST[NAME]=gender
+        NAME_LIST[NAME] = gender
         window.localStorage.setItem('genders', JSON.stringify(NAME_LIST))
 
     }
@@ -83,4 +88,20 @@ function remove_local_storage() {
 
     window.localStorage.setItem('genders', JSON.stringify({}))
     load_names_from_storage()
+}
+
+function remove() {
+    filed_name = document.getElementById('name_field').value
+    if (filed_name.length <= 2) {
+        print_error('name length <2')
+        return
+    }
+
+    if (filed_name in NAME_LIST) {
+        console.log('hast')
+        delete NAME_LIST[filed_name]
+        window.localStorage.setItem('genders', JSON.stringify(NAME_LIST))
+        load_names_from_storage()
+    }
+
 }
