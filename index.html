@@ -2,10 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta author="hoseinlook">
+
     <title>Gender Verification</title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="main.js" defer></script>
+
 
 </head>
 <body>
+<div class="center_container">
+
+    <div class="left_container">
+        <h2> hi or she ??</h2>
+
+        <form class="inner" name="gender_form" >
+            <label for="name_field" style="display: inline">Name:</label>
+            <input type="text" id="name_field" minlength="2" maxlength="255" style="display: inline" required="required"/>
+            <br>
+
+            <label for="male_choice"  > Male</label>
+            <input type="radio" id="male_choice" name="radio_group" value="male"  checked="checked" />
+            <br>
+
+            <label for="women_choice" >Female</label>
+            <input type="radio" id="women_choice" name="radio_group" value="female" />
+
+            <br>
+            <button type="button" onclick="ali()" >submit</button>
+            <br>
+            <button type="button" onclick="ali()" >save</button>
+            <br>
+            <button type="reset"  >reset</button>
+        </form>
+
+    </div>
+    <div class="right_container">
+        <div >
+            <h2> Prediction</h2>
+            <h4 id="predict_gender">Male</h4>
+            <h4 id="predict_value">0.93</h4>
+            <label>
+                Saved Answers
+                <textarea readonly="readonly"> </textarea>
+                <button type="button" onclick="ali()"> clear</button>
+            </label>
+        </div>
+    </div>
+
+</div>
 
 
 </body>
