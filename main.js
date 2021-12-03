@@ -5,6 +5,7 @@ console.log('hi')
 
 
 function print_error(msg) {
+    // fill error box
     document.getElementById('error').style.visibility = 'visible'
     document.getElementById('error').innerText = msg
 
@@ -14,6 +15,7 @@ function print_error(msg) {
 }
 
 function load_names_from_storage() {
+    // load from storage
     genders = window.localStorage.getItem('genders')
     if (genders != null) {
         NAME_LIST = JSON.parse(genders)
@@ -31,6 +33,7 @@ function load_names_from_storage() {
 load_names_from_storage()
 
 function submit() {
+    // send request and fetch gender
     var requestOptions = {
         method: 'GET',
         // redirect: 'follow'
@@ -67,6 +70,7 @@ function clear_radio() {
 }
 
 function save() {
+    // save result to storage
     let radio_value = document.getElementsByName('radio_group')
     let gender = 'male'
     radio_value.forEach(element => {
@@ -85,12 +89,13 @@ function save() {
 }
 
 function remove_local_storage() {
-
+    // clear local storage
     window.localStorage.setItem('genders', JSON.stringify({}))
     load_names_from_storage()
 }
 
 function remove() {
+    //  onclick to remove name from list
     filed_name = document.getElementById('name_field').value
     if (filed_name.length <= 2) {
         print_error('name length <2')

@@ -1,4 +1,7 @@
 body {
+    /*
+        body
+    */
     min-height: 100vh;
     display: flex;
     font-family: sans-serif;
@@ -12,6 +15,9 @@ body {
 }
 
 .center_container {
+    /*
+        center container that include left_container and right_container
+    */
     background-color: rgba(255, 162, 0, 0.29);
     display: grid;
     position: static;
@@ -24,6 +30,9 @@ body {
 }
 
 .left_container {
+    /*
+        child of center + flexible and responsive
+    */
     display: flex;
     height: 100%;
     width: 100%;
@@ -35,6 +44,10 @@ body {
 }
 
 .right_container {
+    /*
+        child of center + flexible and responsive
+    */
+
     display: flex;
     height: 100%;
     width: 100%;
@@ -44,7 +57,10 @@ body {
 
 }
 
-.inner {
+.form_gender {
+    /*
+        css of gender form
+    */
     display: block;
 
     margin: auto auto auto 10px;
@@ -61,6 +77,10 @@ input{
 }
 
 .error{
+    /*
+        error  class
+        change position and hide  related tag
+    */
     position: absolute;
     visibility: hidden;
     width: 200px;
